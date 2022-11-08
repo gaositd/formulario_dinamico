@@ -1,30 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./App.css";
 import inputs from "./json/json.json";
 
 function App() {
-  const [elements, setElements] = useState([
-    {
-      name: "",
-      type: "",
-      value: "",
-    },
-  ]);
+  const [elements, setElements] = useState([]);
+  const refs = useRef([]);
 
   const addElement = (data) => {
-    setElements((elements) => ({
-      ...elements,
-      [data.name]: data.value,
-    }));
+    setElements((prev) => [
+      ...prev,
+      {
+        name: data.target.name,
+        type: data.target.type,
+        value: data.target.value,
+        id: data.target.id,
+      },
+    ]);
   };
 
   const deleteElement = (e) => {
-    alert(e.target.value);
-  };
+    // const newElements = elements.filter((,index) => e === index);
 
-  useEffect(() => {
-    // console.log(elements);
-  }, [elements]);
+    setElements((prev) => [...prev.splice(e, 1)]);
+  };
 
   return (
     <div className="App">
@@ -36,7 +34,7 @@ function App() {
           <h1 className="App-title">Elementos del Formulario</h1>
           {inputs.map((data, i) => {
             return (
-              <div key={data.key}>
+              <div key={i}>
                 <input
                   type={data.type}
                   name={data.name}
@@ -47,6 +45,7 @@ function App() {
                   onChange={(e) => {
                     //console.log(e.target.value);
                   }}
+                  ref={(el) => (refs.current[i] = el)}
                 />
               </div>
             );
@@ -54,26 +53,25 @@ function App() {
         </div>
         <div className="App-boxSide">
           <h1 className="App-title">Agregado Dinámico</h1>
-          {elements.length > 1
-            ? elements.map((element, key) => {
-                return (
-                  <div key={key}>
-                    <input
-                      type={element.type}
-                      name={element.name}
-                      id={element.key}
-                    />
-                    <button
-                      name="deleteElement"
-                      id="deleteElement"
-                      onClick={(element) => deleteElement(element)}
-                    >
-                      Delete Element
-                    </button>
-                  </div>
-                );
-              })
-            : null}
+          {elements &&
+            elements.map((element, key) => {
+              return (
+                <div key={key}>
+                  <input
+                    type={element.type}
+                    name={element.name}
+                    id={element.key}
+                  />
+                  <button
+                    name="deleteElement"
+                    id="deleteElement"
+                    onClick={() => deleteElement(key)}
+                  >
+                    Delete Element
+                  </button>
+                </div>
+              );
+            })}
         </div>
       </main>
     </div>

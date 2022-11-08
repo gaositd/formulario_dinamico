@@ -2,21 +2,19 @@
   {
     "name": "text",
     "type": "text",
-    "value": ""
+    "value": "",
+    "id": 0
   },
   {
     "name": "radio",
     "type": "radio",
-    "value": ""
+    "value": "",
+    "id": 0
   },
   {
-    "name": "select",
-    "type": "select",
-    "value": ""
-  },
-  {
-    "name": "option",
-    "type": "option",
-    "value": ""
+    "name": "date",
+    "type": "date",
+    "value": "",
+    "id": 0
   }
 ]
