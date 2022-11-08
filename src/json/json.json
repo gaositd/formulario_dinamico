@@ -1,18 +1,22 @@
 [
   {
     "name": "text",
-    "type": "text"
+    "type": "text",
+    "value": ""
   },
   {
-    "name": "date",
-    "type": "date"
+    "name": "radio",
+    "type": "radio",
+    "value": ""
   },
   {
     "name": "select",
-    "type": "select"
+    "type": "select",
+    "value": ""
   },
   {
     "name": "option",
-    "type": "option"
+    "type": "option",
+    "value": ""
   }
 ]

@@ -33,6 +33,14 @@
   border-radius: 25px;
 }
 
+.App-Input {
+  width: 20vw;
+  padding: 1rem, 1rem;
+  margin: auto;
+  margin: 1rem;
+  height: 1.6rem;
+}
+
 .App-link {
   color: #61dafb;
 }
