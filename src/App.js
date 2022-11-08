@@ -19,8 +19,8 @@ function App() {
   };
 
   const deleteElement = (e) => {
-    // const newElements = elements.filter((,index) => e === index);
-
+    const newElements = elements.filter((test, index) => e === index);
+    console.log(newElements);
     setElements((prev) => [...prev.splice(e, 1)]);
   };
 
